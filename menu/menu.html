@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	/*清零*/
+		*{
+			margin:0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		body{
+			background-image: url(img/bg.jpg);
+		}
+		.nav{
+			height:100px;
+
+			position:absolute;
+			left:0;
+			top:50%;
+			margin-top:-50px;
+			z-index:2;
+			background:url(img/blackBj.png);
+			font-family: 'Hiragino Sans GB', 'Hiragino Sans GB W3', 微软雅黑;
+		}
+		.leftNav{
+			width:130px;
+			height:100px;
+			font-size:28px;
+			color:#fff;
+			line-height:100px;
+			text-align:center;
+			border-right:#FFF dashed 1px;
+			background:url(img/blackBj.png) left top repeat;
+			float:left;
+		}
+		.leftNav a{color:#FFF; 
+			font-family: 'Hiragino Sans GB', 'Hiragino Sans GB W3', 微软雅黑;}
+		.rightNav{
+			width: 700px;
+			height:100px;
+			font-size:18px;
+			text-align: right;
+			position: relative;
+			float: right;
+			overflow: hidden;
+		}
+		.rightNav a{
+			color:#FFF;
+			padding:0 15px;
+			position:relative;
+			top:100px;
+		}
+		.content{
+			width:400px;
+			height:0;
+			overflow:hidden;
+			background:url(img/blackBj.png) left top repeat;
+			position:absolute;
+			right:0;
+			top:50%;
+			z-index:4;
+		}
+		.content .h3{
+			height:30px;
+			line-height:30px;
+			overflow:hidden;
+			text-align:right;
+			font-weight:normal;
+		}
+		.content .h3 a{
+			color:#CCC;
+			font-size:14px;
+			margin-right:10px;
+		}
+		.content .txt{
+			overflow:hidden;
+			clear:both;
+			padding:20px;
+			padding-top:0;
+			color:#FFF;
+		}
+		.content .txt h3{
+			font-size:14px;
+			line-height:30px;
+		}
+		.content .txt p{
+			font-size:14px;
+			line-height:30px;
+		}
+	</style>
+	<script src="js/zns_motion.js" type="text/javascript"></script>
+<script src="js/zns_common.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="nav" class="nav">
+	<div class="leftNav" id="leftNav">
+		<a href="#" target="_blank">汪星人</a>
+	</div>
+	<div class="rightNav" id="rightNav">
+		<a href="#">犬种</a>
+		<a href="#">美容</a>
+		<a href="#">主粮</a>
+		<a href="#">联系我们</a>
+		<a href="#">关于我们</a>
+	</div>
+</div>
+<div class="content" id="content" style="display:block;">
+	<h3 class="h3"><a href="#" id="close">X</a></h3>
+    <div class="txt">
+    	<h3 id="title">DESSERTS</h3>
+    	<p>温州幸福俱乐部（瑞缘犬舍），</p>
+    	<p>种公拉菲和卡恩对外借配，</p>
+        <p>借配价格：6000/10000左右，</p>
+        <p>并且常年有高品质赛级金毛幼犬预定出售，</p>
+        <p>幼犬价格：8千~1.5万。</p>
+        <p>联系电话/微信：15558826126</p>
+    </div>
+</div>
+</body>
+</html>

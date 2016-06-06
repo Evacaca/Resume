@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/jquery.fullPage.css">
+
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.min.js"></script>
+	<script src="js/jquery.fullPage.min.js"></script>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.fn.fullpage({
+			    slidesColor: ['#C2E5FF', '#FDF6E2', '#EAEAEA', '#F4F4F4','#F4F4F4','#FDF6E2'],
+			    anchors: ['page1', 'page2', 'page3', 'page4','page5','page6'],
+			    //'navigation':true
+			    menu:'#menu',
+
+			    afterRender:function(){
+			    	$('#top_head .info').each(function(){
+			    		var $rel = $(this).attr('rel');
+			    		var $arr = $rel.split(',');
+			    		$(this).animate({
+			    			left:$arr[2]+'px',
+			    			top:$arr[3]+'px'
+			    		},500);
+			    	});
+			    	$("#info_border").animate({width:"800px"},700);
+			    },
+			    afterLoad: function(anchorLink, index){
+			    	if (index==1) {
+			    		$('#top_head .info').each(function(){
+			    			var $rel = $(this).attr('rel');
+				    		var $arr = $rel.split(',');
+				    		$(this).animate({
+				    			left:$arr[2]+'px',
+				    			top:$arr[3]+'px'
+				    		},500);
+			    		});
+			    		$("#info_border").animate({width:"800px"},700);
+			    	}
+			    	if(index==2){
+			    		$("#about_border").animate({width:"150px"},800);
+			    		$("#about_content").animate({width:"800px",marginTop:"10px",marginBottom:"0"},500,'easeOutElastic',function(){
+							$("#about_content p").eq(0).animate({bottom:"0"},500,function(){
+								$("#about_content p").eq(1).animate({bottom:"0"},500,function(){
+									$("#about_content p").eq(2).animate({bottom:"0"},500,function(){
+										$("#about_content p").eq(3).animate({bottom:"0"},500);
+									});
+								});
+							});
+						});	
+			    	}
+			    	if(index==3){
+			    		$("#skill_border").animate({width:"150px"},800);
+						$(".skill_detail").eq(0).animate({left:"50px",top:"0px"},500,function(){
+								$(".skill_detail").eq(1).animate({right:"50px",top:"120px"},500,function(){
+									$(".skill_detail").eq(2).animate({left:"50px",top:"220px"},500,function(){
+										$(".skill_detail").eq(3).animate({right:"50px",bottom:"100px"},500);
+									});
+								});
+							});
+			    	}
+			    	if (index==4) {
+			    		$("#exp_border").animate({width:"150px"},800);
+			    	}
+			    	if (index==5) {
+			    		$("#works_border").animate({width:"150px"},800);
+			    	}
+			    	if (index==6) {
+			    		$("#contact_border").animate({width:"150px"},800);
+			    	}
+			    	
+			    },
+			    onLeave: function(index, direction){
+					if(index == 1){
+						$('#top_head .info').each(function(){
+							var $rel = $(this).attr('rel');
+							var $arr = $rel.split(',');
+							$(this).animate({
+								left: $arr[0]+'px',
+								top: $arr[1]+'px'
+							}, 500);
+						});
+					}
+					if(index==2){
+						$("#about_border").animate({width:"0"},800);
+					}
+					if(index==3){
+						$("#skill_border").animate({width:"0"},800);
+						$(".skill_detail").eq(0).animate({left:"-420px"},500);
+						$(".skill_detail").eq(1).animate({right:"-430px",top:"120px"},500);
+						$(".skill_detail").eq(2).animate({left:"-420px",top:"220px"},500);
+						$(".skill_detail").eq(3).animate({right:"-430px",bottom:"100px"},500);
+			    	}
+			    	if(index==4){
+			    		$("#exp_border").animate({width:"0"},800);
+			    	}
+			    	if(index==5){
+			    		$("#works_border").animate({width:"0"},800);
+			    	}
+			    	if(index==6){
+			    		$("#contact_border").animate({width:"0"},800);
+			    	}
+					
+				},
+
+		});
+});
+	</script>
+</head>
+<body>
+<ul id="menu">
+	<li data-menuanchor="page1" class="active"><a href="#page1">TOP</a></li>
+	<li data-menuanchor="page2"><a href="#page2">关于我</a></li>
+	<li data-menuanchor="page3"><a href="#page3">专业技能</a></li>
+	<li data-menuanchor="page4"><a href="#page4">我的经历</a></li>
+	<li data-menuanchor="page5"><a href="#page5">我的作品</a></li>
+	<li data-menuanchor="page6"><a href="#page6">联系我</a></li>
+</ul>
+
+<div id="fullpage">
+    <div class="section" id="section1">
+		<div id="top_head">
+			<a class="top_img info" href="javascript:void(0)" rel="600,0,600,250">
+				<img src="img/1.jpg">
+			</a>
+			<div class="info" id="top_info" rel="0,667,0,400">
+				<p>热爱前端，热爱生活</p>
+			</div><!--end of top_info-->
+			<div class="info" id="top_info_content" rel="0,667,0,450">
+			<div id="info_border"></div>
+				<p>王丽婷</p>
+				<p>22岁</p>
+				<p>在校生</p>
+			</div><!--end of top_info_content-->
+		</div><!--end of top_head-->
+    </div><!--end of section one-->
+    <!--section two-->
+    <div class="section" id="section2">
+    	<div id="about">
+    		<div class="section_head" id="about_head">
+    			<h1>关于我</h1>
+    			<div class="section_border" id="about_border"></div>
+    			<h2>- ABOUT ME -</h2>
+    		</div>
+    		<div id="about_info">
+    			<div class="about_list">
+    				<div class="about_list_img" id="about_edu_img">
+    					
+    				</div>
+    				<div class="about_list_info" id="about_edu_info">
+    					学历
+    					<p>本科</p>
+    				</div><!--about_list_edu end-->
+    			</div><!--about_list end-->
+    			<div class="about_list">
+    				<div class="about_list_img" id="about_me_img">
+    					
+    				</div>
+    				<div class="about_list_info" id="about_me_info">
+    					年龄
+    					<p>22岁</p>
+    				</div><!--about_list_me end-->
+    			</div><!--about_list end-->
+    			<div class="about_list">
+    				<div class="about_list_img" id="about_addr_img">
+    					
+    				</div>
+    				<div class="about_list_info" id="about_addr_info">
+    					坐标
+    					<p>广州</p>
+    				</div><!--about_list_addr end-->
+    			</div><!--about_list end-->
+    			<div class="about_list">
+    				<div class="about_list_img" id="about_state_img">
+    					
+    				</div>
+    				<div class="about_list_info" id="about_state_info">
+    					状态
+    					<p>大三</p>
+    				</div><!--about_list_state end-->
+    			</div><!--about_list end-->
+    		</div><!--about_info end-->
+    		<div id="about_content">
+    			<p>现就读于广东财经大学，是一名即将面临就业的大三狗,软件工程这个专业让我接触到了代码,</p>
+    			<p>以至于我爱他爱的无法自拔，喜欢研究精美的网页。热爱前端，热衷于研究各类网页使用的</p>
+    			<p>框架，技术，每一次的深入探究以及get到技能后都能让我兴奋不已。</p>
+    			<p>好好学习，天天向上</p>
+    		</div>
+    	</div><!--about end-->
+    </div>
+    <div class="section" id="section3">
+    	<div id="skill">
+    		<div class="section_head" id="skill_head">
+    			<h1>专业技能</h1>
+    			<div class="section_border" id="skill_border"></div>
+    			<h2>- SKILL -</h2>
+    		</div>
+    		<div id="skill_info"></div>
+    		<div id="skill_list">
+    			<div class="skill_detail" id="skill_html" >
+    				<img src="img/html.png" class="skill_img">
+    				<blockquote id="html_mode" rel="">
+    					<p>深刻理解Web标准</p>
+    					<p>熟练运用html标签</p>
+    					<p>熟悉xml及xhtml标记语言</p>
+    					<p>掌握html5如SVG，localstorage新特性</p>
+    				</blockquote>
+    			</div>
+    			<div class="skill_detail" id="skill_css" rel="0,100">
+    				<img src="img/css.png" class="skill_img">
+    				<blockquote id="css_mode">
+    					<p>熟练运用CSS选择器</p>
+    					<p>注重浏览器兼容性，熟悉常见css hack</p>
+    					<p>了解Bootstrap框架</p>
+    					<p>掌握CSS如弹性布局、边框盒模型等新属性</p>
+    				</blockquote>
+    			</div>
+    			<div class="skill_detail" id="skill_js">
+    				<img src="img/js.png" class="skill_img">
+    				<blockquote id="js_mode">
+    					<p>掌握JQuery库</p>
+    					<p>掌握DOM脚本编程</p>
+    					<p>熟练使用浏览器扩展如Firebug&nbsp;&nbsp;&nbsp;</p>
+    					<p>正在学习Ajax</p>
+    				</blockquote>
+    			</div>
+    			<div class="skill_detail" id="skill_more">
+    				<img src="img/js.png" class="skill_img">
+    				<blockquote id="more_mode">
+    					<p>注重检测浏览器对JS的支持程度</p>
+    					<p>注重Javascript性能优化</p>
+    					<p>正在不断学习原生JavaScript&nbsp;&nbsp;&nbsp;</p>
+    					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    				</blockquote>
+    			</div>
+    		</div><!---->
+		</div>
+    </div><!--section three end-->
+    <div class="section" id="section4">
+    	<div id="exp">
+    		<div class="section_head" id="exp_head">
+    			<h1>我的经历</h1>
+    			<div class="section_border" id="exp_border"></div>
+    			<h2>- EXPERIENCE -</h2>
+    		</div>
+    		<div id="exp_list">
+    			<div class="cube-wrap">
+			        <div class="cube depth">
+				        <div class="front-pane"></div>
+				        <div class="back-pane"></div>
+				        <div class="top-pane"></div>
+				        <div class="bottom-pane"></div>
+				        <div class="left-pane"></div>
+				        <div class="right-pane"></div>
+			        </div>
+		       </div>
+		       <div id="exp_info">
+		       <p>I have no the relevant experiences,and I am trying to better myself.<br/>I hope you can give me a opportunity to fill the Six faces,<br/>I believe I can take more efficient in our company.</p>
+		       </div>
+    		</div>
+    	</div>
+    </div><!--section four end-->
+    <div class="section" id="section5">
+    	<div id="works">
+    		<div class="section_head" id="works_head">
+    			<h1>我的作品</h1>
+    			<div class="section_border" id="works_border"></div>
+    			<h2>- WORKS -</h2>
+    		</div>
+    		<div id="works_list">
+    			<ul id="works_box">
+    				<li class="works_content" id="works_1">
+    					<div class="works_box_content">
+    						<div class="works_box_hover">
+	                            <p class="works_box_title">模拟实时时钟</p>
+	                            <span class="works_box_hover_icon">
+	                                <a href="clock/real-time.html" target="_blank" class="works_box_link">
+	                                    <img src="img/demo-link.png" alt="">
+	                                </a>
+	                            </span>
+	                        </div>
+	                        <img src="img/demo1.jpg">
+    					</div>
+    					
+    				</li>
+    				<li class="works_content" id="works_2">
+    					<div class="works_box_content">
+    						<div class="works_box_hover">
+	                            <p class="works_box_title">Seamless Scrolling</p>
+	                            <span class="works_box_hover_icon">
+	                                <a href="scroll/Seamless_scrolling.html" target="_blank" class="works_box_link">
+	                                    <img src="img/demo-link.png" alt="">
+	                                </a>
+	                            </span>
+	                        </div>
+	                        <img src="img/demo2.jpg">
+    					</div>
+    				</li>
+    				<li class="works_content" id="works_3">
+    					<div class="works_box_content">
+    						<div class="works_box_hover">
+	                            <p class="works_box_title">Energetic Menu</p>
+	                            <span class="works_box_hover_icon">
+	                                <a href="menu/menu.html" target="_blank" class="works_box_link">
+	                                    <img src="img/demo-link.png" alt="">
+	                                </a>
+	                            </span>
+	                        </div>
+	                        <img src="img/demo3.jpg">
+    					</div>
+    				</li>
+    				<li class="works_content" id="works_4">
+    					<div class="works_box_content">
+    						<div class="works_box_hover">
+	                            <p class="works_box_title">游戏下拉遮罩</p>
+	                            <span class="works_box_hover_icon">
+	                                <a href="shade/shade.html" target="_blank" class="works_box_link">
+	                                    <img src="img/demo-link.png" alt="">
+	                                </a>
+	                            </span>
+	                        </div>
+	                        <img src="img/demo4.jpg">
+    					</div>
+    				</li>
+    			</ul>
+    		</div>
+    	</div>
+    </div><!--section five end-->
+    <div class="section" id="section6">
+    	<div id="contact">
+    		<div class="section_head" id="contact_head">
+    			<h1>联系我</h1>
+    			<div class="section_border" id="contact_border"></div>
+    			<h2>- CONTACT -</h2>
+    		</div>
+    		<div class="contact_info">
+    			<h1>我有话要说......</h1>
+    			<p>我是一个有梦想，嗜代码，爱前端的正经也不正经的女青年，
+   				是一名新兴的前端逗比，没有很多经验，也没有技术大牛带，
+    			自己摸爬打滚，与蜗牛赛跑。看到精美的页面就心动，看到漂亮的代码就兴奋，
+    			希望自己潜心修炼，能跟上前端研发的大队，甚至赶上超前！</p>
+    			<h3 >我的学习态度:</h3><p class="contact_lang">业精于勤，荒于嬉；行成于思，毁于随。</p>
+    			<h3>我的人生态度：</h3><p class="contact_lang">比你优秀的人都还在努力，你有什么资格不去奋斗。</p>
+    			<p id="contact_other">世界那么大，带上我吧！</p>
+				<ul>
+			        <li><a href="@"><img src="img/envelope1.png">邮箱:m13728080255@163.com</a></li>
+			        <li><a href="http://weibo.com/u/5885869359"><img src="img/weibo1.png">微博</a></li>
+			        <li><a href="https://www.zhihu.com/people/wang-qia-qia-76"><img src="img/zhi1.jpg">知乎</a></li>
+			        <li><a href="https://github.com/Evacaca"><img src="img/github2.jpg">Github</a></li>
+			    </ul>
+    		</div>
+    	</div>
+    </div>
+</div>
+</body>
+</html>

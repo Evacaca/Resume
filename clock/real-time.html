@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-color: black;
+		}
+		#date,#time{
+			text-align: center;
+			padding-top: 18px;
+		}
+		#date{
+			margin-top: 200px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var aImg1 = document.getElementsByName('img1');
+			var aImg2 = document.getElementsByName('img2');
+			var aImg3 = document.getElementById('img3');
+			function tick(){
+				//获得当前时分秒
+				var oDate = new Date();
+				var str1 = toNum(oDate.getHours())+toNum(oDate.getMinutes())+toNum(oDate.getSeconds());
+				//获得当前年月日
+				//月份从0开始，因此要加1
+				//getDay()返回一星期中的某一天（0-6）
+				//getDate()返回一个月中的某一天（1-31）
+				var str2 = toNum(oDate.getFullYear())+toNum(oDate.getMonth()+1)+toNum(oDate.getDate());
+				//获取当前星期
+				var str3 = oDate.getDay();
+				
+				//alert(str1);
+				for (var i = 0; i < aImg1.length; i++) {
+					aImg1[i].src = 'img/'+str1.charAt(i)+'.png';//改变图片路径
+				}
+				for(var j = 0; j<aImg2.length; j++){
+					aImg2[j].src = 'img/'+str2.charAt(j)+'.png';//改变图片路径
+				}
+				switch(str3){//改变图片路径
+					case 0:
+						aImg3.src = 'img/seven.png';
+						break;
+					case 1:
+						aImg3.src = 'img/one.png';
+						break;
+					case 2:
+						aImg3.src = 'img/two.png';
+						break;
+					case 3:
+						aImg3.src = 'img/three.png';
+						break;
+					case 4:
+						aImg3.src = 'img/four.png';
+						break;
+					case 5:
+						aImg3.src = 'img/five.png';
+						break;
+					case 6:
+						aImg3.src = 'img/six.png';
+						break;
+				}
+			}
+			setInterval(tick, 1000);//设定定时器，每一秒刷新一次,
+			//注意：这里是1秒后函数tick（）中的代码被加入队列中等待执行
+			tick();//闭包形式，使得时钟不会瞬间归零
+		};
+		function toNum(num){//将数字转换为字符串，并将一位数的都变为两位数
+			if(num<10)
+				return '0'+num;
+			else
+				return ''+num;
+		}
+	</script>
+</head>
+<body>
+	
+	<div id = "date">
+		<img name="img2" src="img/0.png">
+		<img name="img2" src="img/0.png">
+		<img name="img2" src="img/0.png">
+		<img name="img2" src="img/0.png">
+		<img src="img/year.png">
+		<img name="img2" src="img/0.png">
+		<img name="img2" src="img/0.png">
+		<img src="img/month.png">
+		<img name="img2" src="img/0.png">
+		<img name="img2" src="img/0.png">
+		<img src="img/seven.png">
+	</div>
+	<div id = "time">
+		<img name="img1" src="img/0.png">
+		<img name="img1" src="img/0.png">
+		<img src="img/sign.png">
+		<img name="img1" src="img/0.png">
+		<img name="img1" src="img/0.png">
+		<img src="img/sign.png">
+		<img name="img1" src="img/0.png">
+		<img name="img1" src="img/0.png">
+		<img src="img/week.png">
+		<img id="img3" src="img/one.png">
+		
+	</div>
+
+
+
+</body>
+</html>

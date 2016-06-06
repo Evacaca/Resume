@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+	<title></title>
+	<style type="text/css">
+	*{				
+		margin: 0px;
+		padding: 0px;
+	}
+	#div0{
+		width:880px;
+		height: 108px;
+		position: relative;
+		margin: 50px auto;
+	}
+	#left{
+		display: block;
+		width: 65px; 
+		height: 65px;
+		background: url(images/btn.jpg) no-repeat -70px 1px;
+		position: absolute; 
+		top: 20px; 
+		left: 1px;	 
+	}
+	#right{
+		display: block;
+		width: 65px; 
+		height: 65px;
+		background: url(images/btn.jpg) no-repeat 1px 1px;
+		position: absolute; 
+		top: 20px; 
+		right: 1px;	 
+	}
+	#div1{
+		width: 712px;
+		height: 108px;
+		margin: 0px auto;
+		position: relative;
+		background-color: #fff;
+		overflow: hidden;
+	}
+	ul{
+		position: absolute;
+		left:0;
+		top:0;
+	}
+	li{
+		width: 178px;
+		height: 108px;
+		list-style: none;
+		float: left;
+	}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv1 = document.getElementById('div1');
+			var oUl = oDiv1.getElementsByTagName('ul')[0];
+			var aLi=oUl.getElementsByTagName('li');
+			var speed = -2;
+			oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;//获得两份图片
+			oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+			function doMove(){
+				if(oUl.offsetLeft<-oUl.offsetWidth/2)//当图片滚完一半
+				{
+					oUl.style.left='0';//将图片迅速拉回
+				}
+				if(oUl.offsetLeft>0){
+					oUl.style.left = -oUl.offsetWidth/2+'px';
+				}
+				oUl.style.left=oUl.offsetLeft+speed+'px';//改变图片的左边距，相当于滚动速度
+			}
+			var timer = setInterval(doMove,30);
+			oDiv1.onmouseover = function(){//鼠标进去，滚动停止
+				clearInterval(timer);//清除定时器
+			};
+			oDiv1.onmouseout = function(){//鼠标离开，继续滚动
+				timer = setInterval(doMove,30);//开启定时器
+			};
+			document.getElementsByTagName('a')[0].onclick = function(){
+				speed = -2;
+			};
+			document.getElementsByTagName('a')[1].onclick = function(){
+				speed = 2;
+			};
+			
+		};
+	</script>
+</head>
+<body>
+<div id="div0">
+<a id="left" href="javascript:;"></a>
+<a id="right" href="javascript:;"></a>
+	<div id="div1">
+		<ul>
+			<li><img src="images/1.jpg"></li>
+			<li><img src="images/2.jpg"></li>
+			<li><img src="images/3.jpg"></li>
+			<li><img src="images/4.jpg"></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
